@@ -25,7 +25,7 @@ module Thingiverse
     end
 
     def tags
-      response = Thingiverse::Connection.get(tags_url)
+      response = Thingiverse::Connection.get(@tags_url)
       raise "#{response.code}: #{JSON.parse(response.body)['error']}" unless response.success?
       response.parsed_response.collect do |attrs|
         Thingiverse::Tags.new attrs
